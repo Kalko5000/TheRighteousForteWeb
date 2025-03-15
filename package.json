@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Website designed to help running the D&D campaign know as The Righteous Forte",
   "private": true,
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
     "push": "rm *~; git pull; git add . ; git commit -m 'Code improvement'; git push",
     "pull": "git pull",

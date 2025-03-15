@@ -14,7 +14,7 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 const img = new Image();
-img.src = "TheRighteousForteWeb/img/CoolRat.png"; // Replace with your actual image path
+img.src = "../img/CoolRat.png"; // Replace with your actual image path
 
 let scale = 1;
 const scaleFactor = 1.1; // Zoom factor per scroll
@@ -22,14 +22,16 @@ let originX, originY;
 let isDragging = false;
 let lastMouseX = 0, lastMouseY = 0;
 
-img.onload = function () {
+const main = function() {
+  img.onload = function () {
     canvas.width = img.width;
     canvas.height = img.height;
     originX = canvas.width / 2;
     originY = canvas.height / 2;
     drawImage();
     setupEventListeners(); // Call function to set up interactions
-};
+  };
+}
 
 function drawImage() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -111,3 +113,5 @@ function setupEventListeners() {
         canvas.style.cursor = "grab";
     });
 }
+
+main();
