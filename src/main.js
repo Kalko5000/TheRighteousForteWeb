@@ -14,7 +14,7 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 const img = new Image();
-img.src = "TheRighteousForteWeb//img/CoolRat.png"; // Replace with your actual image path
+img.src = "TheRighteousForteWeb/img/CoolRat.png"; // Replace with your actual image path
 
 let scale = 1;
 const scaleFactor = 1.1; // Zoom factor per scroll
