@@ -16,14 +16,13 @@ const img = new Image();
 img.src = "/TheRighteousForteWeb/img/ValhalisPlayerVer.webp"; // Location of image
 
 let scale = 1;
+let minScale = 1;
 const scaleFactor = 1.1; // Zoom factor per scroll
 let originX, originY;
 let isDragging = false;
 let lastMouseX = 0, lastMouseY = 0;
 
 const main = function() {
-  let minScale = 1;
-
   img.onload = function () {
     const scaleX = canvas.width / img.width;
     const scaleY = canvas.height / img.height;
