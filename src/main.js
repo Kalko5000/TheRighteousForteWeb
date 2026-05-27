@@ -23,6 +23,15 @@ let isDragging = false;
 let lastMouseX = 0, lastMouseY = 0;
 
 const main = function() {
+  /*
+  img.onload = function () {
+    canvas.width = img.width;
+    canvas.height = img.height;
+    originX = canvas.width / 2;
+    originY = canvas.height / 2;
+    drawImage();
+    setupEventListeners(); // Call function to set up interactions
+  }; */
   img.onload = function () {
     const scaleX = canvas.width / img.width;
     const scaleY = canvas.height / img.height;
@@ -41,20 +50,13 @@ const main = function() {
 function drawImage() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.save();
-
     ctx.translate(originX, originY);
     ctx.scale(scale, scale);
-
-    ctx.drawImage(
-        img,
-        -img.width / 2,
-        -img.height / 2,
-        img.width,
-        img.height
-    );
-
+    ctx.drawImage(img, -img.width / 2, -img.height / 2);
     ctx.restore();
 }
+
+
 
 function clamp(value, min, max) {
     return Math.max(min, Math.min(max, value));
@@ -63,26 +65,13 @@ function clamp(value, min, max) {
 function enforcePanLimits() {
     const scaledWidth = img.width * scale;
     const scaledHeight = img.height * scale;
+    const minX = canvas.width - scaledWidth / 2;
+    const maxX = scaledWidth / 2;
+    const minY = canvas.height - scaledHeight / 2;
+    const maxY = scaledHeight / 2;
 
-    // If image is smaller than canvas, center it and allow no panning
-    const imageSmallerX = scaledWidth <= canvas.width;
-    const imageSmallerY = scaledHeight <= canvas.height;
-
-    if (imageSmallerX) {
-        originX = canvas.width / 2;
-    } else {
-        const minX = canvas.width - scaledWidth / 2;
-        const maxX = scaledWidth / 2;
-        originX = clamp(originX, minX, maxX);
-    }
-
-    if (imageSmallerY) {
-        originY = canvas.height / 2;
-    } else {
-        const minY = canvas.height - scaledHeight / 2;
-        const maxY = scaledHeight / 2;
-        originY = clamp(originY, minY, maxY);
-    }
+    originX = clamp(originX, minX, maxX);
+    originY = clamp(originY, minY, maxY);
 }
 
 function setupEventListeners() {
@@ -94,7 +83,7 @@ function setupEventListeners() {
         const zoom = event.deltaY < 0 ? scaleFactor : 1 / scaleFactor;
 
         const newScale = scale * zoom;
-        if (newScale < minScale || newScale > 5) return; // Ensure we never zoom out beyond original size
+        if (newScale < 1 || newScale > 5) return; // Ensure we never zoom out beyond original size
 
         // Adjust origin to keep zoom centered on the mouse
         originX = mouseX - (mouseX - originX) * zoom;
@@ -140,5 +129,3 @@ function setupEventListeners() {
         canvas.style.cursor = "grab";
     });
 }
-
-main();
