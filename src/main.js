@@ -23,23 +23,36 @@ let lastMouseX = 0, lastMouseY = 0;
 
 const main = function() {
   img.onload = function () {
-    // canvas.width = img.width;
-    // canvas.height = img.height;
-    img.width = canvas.width;
-    img.height = canvas.height;
+
+    // Fit-to-canvas scale while keeping image quality
+    const scaleX = canvas.width / img.width;
+    const scaleY = canvas.height / img.height;
+    scale = Math.min(scaleX, scaleY);
+
     originX = canvas.width / 2;
     originY = canvas.height / 2;
+
     drawImage();
-    setupEventListeners(); // Call function to set up interactions
+    setupEventListeners();
   };
 }
 
 function drawImage() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.save();
+
     ctx.translate(originX, originY);
     ctx.scale(scale, scale);
-    ctx.DrawImage(img, 0, 0, img.Width, img.Height);
+
+    // Draw the image centered
+    ctx.drawImage(
+        img,
+        -img.width / 2,
+        -img.height / 2,
+        img.width,
+        img.height
+    );
+
     ctx.restore();
 }
 
