@@ -49,7 +49,6 @@ const main = function() {
   }; */
 }
 
-/*
 function drawImage() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.save();
@@ -57,8 +56,9 @@ function drawImage() {
     ctx.scale(scale, scale);
     ctx.drawImage(img, -img.width / 2, -img.height / 2);
     ctx.restore();
-} */
+}
 
+/*
 function drawImage() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.save();
@@ -75,9 +75,7 @@ function drawImage() {
     );
 
     ctx.restore();
-}
-
-
+} */
 
 function clamp(value, min, max) {
     return Math.max(min, Math.min(max, value));
