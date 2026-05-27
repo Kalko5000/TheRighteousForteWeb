@@ -12,41 +12,26 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-const img = new Image();
+const img = new Image(canvas.width, canvas.height);
 img.src = "/TheRighteousForteWeb/img/ValhalisPlayerVer.webp"; // Location of image
 
 let scale = 1;
-// let minScale = 1;
 const scaleFactor = 1.1; // Zoom factor per scroll
 let originX, originY;
 let isDragging = false;
 let lastMouseX = 0, lastMouseY = 0;
 
 const main = function() {
-  
   img.onload = function () {
     // canvas.width = img.width;
     // canvas.height = img.height;
-    img.width = canvas.width;
-    img.height = canvas.height;
+    // img.width = canvas.width;
+    // img.height = canvas.height;
     originX = canvas.width / 2;
     originY = canvas.height / 2;
     drawImage();
     setupEventListeners(); // Call function to set up interactions
-  }; /*
-  img.onload = function () {
-    const scaleX = canvas.width / img.width;
-    const scaleY = canvas.height / img.height;
-    minScale = Math.min(scaleX, scaleY); // THIS is the real fit-to-screen scale
-
-    scale = minScale;
-
-    originX = canvas.width / 2;
-    originY = canvas.height / 2;
-
-    drawImage();
-    setupEventListeners();
-  }; */
+  };
 }
 
 function drawImage() {
@@ -57,25 +42,6 @@ function drawImage() {
     ctx.drawImage(img, -img.width / 2, -img.height / 2);
     ctx.restore();
 }
-
-/*
-function drawImage() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.save();
-
-    ctx.translate(originX, originY);
-    ctx.scale(scale, scale);
-
-    ctx.drawImage(
-        img,
-        -img.width / 2,
-        -img.height / 2,
-        img.width,
-        img.height
-    );
-
-    ctx.restore();
-} */
 
 function clamp(value, min, max) {
     return Math.max(min, Math.min(max, value));
@@ -148,3 +114,5 @@ function setupEventListeners() {
         canvas.style.cursor = "grab";
     });
 }
+
+main();
