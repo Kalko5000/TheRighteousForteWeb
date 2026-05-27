@@ -12,7 +12,7 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-const img = new Image();
+const img = new Image(canvas.width, canvas.height);
 img.src = "/TheRighteousForteWeb/img/ValhalisPlayerVer.webp"; // Location of image
 
 let scale = 1;
@@ -25,8 +25,8 @@ const main = function() {
   img.onload = function () {
     // canvas.width = img.width;
     // canvas.height = img.height;
-    img.width = canvas.width;
-    img.height = canvas.height;
+    // img.width = canvas.width;
+    // img.height = canvas.height;
     originX = canvas.width / 2;
     originY = canvas.height / 2;
     drawImage();
