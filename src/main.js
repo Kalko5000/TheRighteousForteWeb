@@ -82,7 +82,7 @@ function setupEventListeners() {
         const zoom = event.deltaY < 0 ? scaleFactor : 1 / scaleFactor;
 
         const newScale = scale * zoom;
-        if (newScale < 1 || newScale > 5) return; // Ensure we never zoom out beyond original size
+        if (newScale < minScale || newScale > 5) return; // Ensure we never zoom out beyond original size
 
         // Adjust origin to keep zoom centered on the mouse
         originX = mouseX - (mouseX - originX) * zoom;
