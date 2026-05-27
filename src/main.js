@@ -15,7 +15,7 @@ const ctx = canvas.getContext("2d");
 const img = new Image();
 img.src = "/TheRighteousForteWeb/img/ValhalisPlayerVer.webp"; // Location of image
 
-let scale = 1;
+let scale = 0.5;
 const scaleFactor = 1.1; // Zoom factor per scroll
 let originX, originY;
 let isDragging = false;
