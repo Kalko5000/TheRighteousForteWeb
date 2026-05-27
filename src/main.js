@@ -46,13 +46,31 @@ const main = function() {
     setupEventListeners();
   }; */
 }
-
+/*
 function drawImage() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.save();
     ctx.translate(originX, originY);
     ctx.scale(scale, scale);
     ctx.drawImage(img, -img.width / 2, -img.height / 2);
+    ctx.restore();
+} */
+
+function drawImage() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.save();
+
+    ctx.translate(originX, originY);
+    ctx.scale(scale, scale);
+
+    ctx.drawImage(
+        img,
+        -img.width / 2,
+        -img.height / 2,
+        img.width,
+        img.height
+    );
+
     ctx.restore();
 }
 
