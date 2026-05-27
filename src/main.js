@@ -7,14 +7,13 @@
  * @since Mar 15, 2025
  * @description Main Function to call upon all the code we need to fill in our Canvas
  * @see {@link https://github.com/Kalko5000/TheRighteousForteWeb}
- * @example {blank}
  */
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 const img = new Image();
-img.src = "/TheRighteousForteWeb/img/CoolRat.png"; // Replace with your actual image path
+img.src = "/TheRighteousForteWeb/img/ValhalisPlayerVer.webp"; // Location of image
 
 let scale = 1;
 const scaleFactor = 1.1; // Zoom factor per scroll

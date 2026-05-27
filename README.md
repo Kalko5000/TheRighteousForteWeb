@@ -1,3 +1,3 @@
 # The Righteous Forte
 
-The epic escapades of the fearless group
+Repository to host the map of Valhalis for The Righteous Forte D&D campaign
