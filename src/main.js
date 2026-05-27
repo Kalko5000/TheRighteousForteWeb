@@ -22,11 +22,14 @@ let isDragging = false;
 let lastMouseX = 0, lastMouseY = 0;
 
 const main = function() {
+  let minScale = 1;
+
   img.onload = function () {
-    // Fit-to-canvas scale while keeping image quality
     const scaleX = canvas.width / img.width;
     const scaleY = canvas.height / img.height;
-    scale = Math.min(scaleX, scaleY);
+    minScale = Math.min(scaleX, scaleY); // THIS is the real fit-to-screen scale
+
+    scale = minScale;
 
     originX = canvas.width / 2;
     originY = canvas.height / 2;
@@ -43,7 +46,6 @@ function drawImage() {
     ctx.translate(originX, originY);
     ctx.scale(scale, scale);
 
-    // Draw the image centered
     ctx.drawImage(
         img,
         -img.width / 2,
