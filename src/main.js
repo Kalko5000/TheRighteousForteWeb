@@ -63,13 +63,26 @@ function clamp(value, min, max) {
 function enforcePanLimits() {
     const scaledWidth = img.width * scale;
     const scaledHeight = img.height * scale;
-    const minX = canvas.width - scaledWidth / 2;
-    const maxX = scaledWidth / 2;
-    const minY = canvas.height - scaledHeight / 2;
-    const maxY = scaledHeight / 2;
 
-    originX = clamp(originX, minX, maxX);
-    originY = clamp(originY, minY, maxY);
+    // If image is smaller than canvas, center it and allow no panning
+    const imageSmallerX = scaledWidth <= canvas.width;
+    const imageSmallerY = scaledHeight <= canvas.height;
+
+    if (imageSmallerX) {
+        originX = canvas.width / 2;
+    } else {
+        const minX = canvas.width - scaledWidth / 2;
+        const maxX = scaledWidth / 2;
+        originX = clamp(originX, minX, maxX);
+    }
+
+    if (imageSmallerY) {
+        originY = canvas.height / 2;
+    } else {
+        const minY = canvas.height - scaledHeight / 2;
+        const maxY = scaledHeight / 2;
+        originY = clamp(originY, minY, maxY);
+    }
 }
 
 function setupEventListeners() {
