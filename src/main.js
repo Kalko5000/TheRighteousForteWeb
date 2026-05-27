@@ -16,7 +16,7 @@ const img = new Image();
 img.src = "/TheRighteousForteWeb/img/ValhalisPlayerVer.webp"; // Location of image
 
 let scale = 1;
-let minScale = 1;
+// let minScale = 1;
 const scaleFactor = 1.1; // Zoom factor per scroll
 let originX, originY;
 let isDragging = false;
@@ -25,8 +25,10 @@ let lastMouseX = 0, lastMouseY = 0;
 const main = function() {
   
   img.onload = function () {
-    canvas.width = img.width;
-    canvas.height = img.height;
+    // canvas.width = img.width;
+    // canvas.height = img.height;
+    img.width = canvas.width;
+    img.height = canvas.height;
     originX = canvas.width / 2;
     originY = canvas.height / 2;
     drawImage();
@@ -46,6 +48,7 @@ const main = function() {
     setupEventListeners();
   }; */
 }
+
 /*
 function drawImage() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
