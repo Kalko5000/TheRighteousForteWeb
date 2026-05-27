@@ -23,7 +23,6 @@ let lastMouseX = 0, lastMouseY = 0;
 
 const main = function() {
   img.onload = function () {
-
     // Fit-to-canvas scale while keeping image quality
     const scaleX = canvas.width / img.width;
     const scaleY = canvas.height / img.height;
