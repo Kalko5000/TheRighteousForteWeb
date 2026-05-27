@@ -23,7 +23,7 @@ let isDragging = false;
 let lastMouseX = 0, lastMouseY = 0;
 
 const main = function() {
-  /*
+  
   img.onload = function () {
     canvas.width = img.width;
     canvas.height = img.height;
@@ -31,7 +31,7 @@ const main = function() {
     originY = canvas.height / 2;
     drawImage();
     setupEventListeners(); // Call function to set up interactions
-  }; */
+  }; /*
   img.onload = function () {
     const scaleX = canvas.width / img.width;
     const scaleY = canvas.height / img.height;
@@ -44,7 +44,7 @@ const main = function() {
 
     drawImage();
     setupEventListeners();
-  };
+  }; */
 }
 
 function drawImage() {
