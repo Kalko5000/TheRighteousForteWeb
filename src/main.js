@@ -23,8 +23,8 @@ let lastMouseX = 0, lastMouseY = 0;
 
 const main = function() {
   img.onload = function () {
-    canvas.width = img.width;
-    canvas.height = img.height;
+    img.width = canvas.width; 
+    img.height = canvas.height;
     originX = canvas.width / 2;
     originY = canvas.height / 2;
     drawImage();
@@ -37,7 +37,7 @@ function drawImage() {
     ctx.save();
     ctx.translate(originX, originY);
     ctx.scale(scale, scale);
-    ctx.drawImage(img, -img.width / 2, -img.height / 2);
+    ctx.DrawImage(img, 0, 0, img.Width, img.Height);
     ctx.restore();
 }
 
