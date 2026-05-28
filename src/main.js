@@ -71,7 +71,7 @@ function clamp(value, min, max) {
 function enforcePanLimits() {
   const scaledWidth = img.width * scale;
   const scaledHeight = img.height * scale;
-
+  
   const minX = canvas.width - scaledWidth / 2;
   const maxX = scaledWidth / 2;
   const minY = canvas.height - scaledHeight / 2;
@@ -142,11 +142,19 @@ function setupEventListeners() {
   });
 
   /**
+   * @desc Updates settings when cursor enters the canvas space
+   */
+  canvas.addEventListener("mouseenter", function () {
+    // Leave dragging as it's previous value, should be false
+    canvas.style.cursor = "grab";
+  });
+
+  /**
    * @desc Updates settings when cursor leaves the canvas space
    */
   canvas.addEventListener("mouseleave", function () {
     isDragging = false;
-    canvas.style.cursor = "grab"; // Why is this not "default"?
+    canvas.style.cursor = "default";
   });
 }
 
