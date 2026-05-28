@@ -1,8 +1,4 @@
 /**
- * Universidad de La Laguna
- * Escuela Superior de Ingeniería y Tecnología
- * Grado en Ingeniería Informática
- *
  * @author Thomas Edward Bradley
  * @since Mar 15, 2025
  * @description Main Function to call upon all the code we need to fill in our Canvas
@@ -13,9 +9,10 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 const img = new Image();
-img.src = "/TheRighteousForteWeb/img/ValhalisPlayerVer.webp"; // Location of image
+img.src = "/TheRighteousForteWeb/img/ValhalisPlayerVer.webp"; // Location of image, github instance
+// img.src = "img/ValhalisPlayerVer.webp"; // Location of image, local instance
 
-let scale = 0.5;
+let scale = 1;
 const scaleFactor = 1.1; // Zoom factor per scroll
 let originX, originY;
 let isDragging = false;
@@ -23,8 +20,8 @@ let lastMouseX = 0, lastMouseY = 0;
 
 const main = function() {
   img.onload = function () {
-    canvas.width = img.width;
-    canvas.height = img.height;
+    img.width = canvas.width;
+    img.height = canvas.height;
     originX = canvas.width / 2;
     originY = canvas.height / 2;
     drawImage();
@@ -33,11 +30,18 @@ const main = function() {
 }
 
 function drawImage() {
+    console.log("Canvas:", canvas.width, canvas.height);
+    console.log("Img:", img.width, img.height);
+
+    ctx.save();          // save unscaled state
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.save();
-    ctx.translate(originX, originY);
-    ctx.scale(scale, scale);
-    ctx.DrawImage(img, 0, 0, img.Width, img.Height);
+
+    ctx.translate(originX, originY); // apply pan if needed
+    ctx.scale(scale, scale);         // apply zoom AFTER clearing
+
+    // draw stretched image to fill canvas
+    ctx.drawImage(img, -canvas.width/2, -canvas.height/2, canvas.width, canvas.height);
+
     ctx.restore();
 }
 
