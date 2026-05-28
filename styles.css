@@ -39,3 +39,7 @@ a:active {
   background-color: transparent;
   text-decoration: underline;
 }
+
+.info { text-align: center; }
+
+.container { display: flex; align-self:flex-start; }
