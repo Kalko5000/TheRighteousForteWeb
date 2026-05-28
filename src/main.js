@@ -23,8 +23,8 @@ let lastMouseX = 0, lastMouseY = 0;
 
 const main = function() {
   img.onload = function () {
-    img.width = canvas.width; 
-    img.height = canvas.height;
+    canvas.width = img.width;
+    canvas.height = img.height;
     originX = canvas.width / 2;
     originY = canvas.height / 2;
     drawImage();
